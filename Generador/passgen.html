@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Contraseñas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        p.password {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Generador de Contraseñas</h1>
+
+    <p class="password" id="passwordDisplay"></p>
+
+    <button onclick="generarContrasena()">Generar Contraseña</button>
+
+    <script>
+        function generarContrasena() {
+            var longitud = parseInt(prompt("Ingrese la longitud de la contraseña (entre 4 y 64 caracteres):", "12"));
+
+            if (isNaN(longitud) || longitud < 4 || longitud > 64) {
+                alert("Por favor, ingrese una longitud válida entre 4 y 64 caracteres.");
+                return;
+            }
+
+            var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+            var contrasena = "";
+
+            for (var i = 0; i < longitud; i++) {
+                var randomIndex = Math.floor(Math.random() * caracteres.length);
+                contrasena += caracteres.charAt(randomIndex);
+            }
+
+            document.getElementById("passwordDisplay").textContent = "Tu contraseña generada es: " + contrasena;
+        }
+    </script>
+</body>
+
+</html>

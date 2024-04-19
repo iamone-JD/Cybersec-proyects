@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Contraseñas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        p.password {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Generador de Contraseñas</h1>
+
+    {% if password %}
+    <p class="password">Tu contraseña generada es: <strong>{{ password }}</strong></p>
+    {% endif %}
+
+    <form action="/generar" method="post">
+        <label for="longitud">Longitud de la contraseña:</label>
+        <input type="number" id="longitud" name="longitud" min="4" max="64" value="12">
+        <br><br>
+        <input type="submit" value="Generar Contraseña">
+    </form>
+</body>
+
+</html>
